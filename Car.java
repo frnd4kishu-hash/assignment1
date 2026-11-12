@@ -37,12 +37,6 @@ public abstract class Car {
     public void stopEngine() {
         currentSpeed = 0;
     }
-
-
-
-
-
-
+    public abstract double speedFactor();
 
 }
-
