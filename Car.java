@@ -10,7 +10,7 @@ public abstract class Car implements Movable {
 
     private double x;
     private double y;
-    private Direction direction = Direction.NORTH;
+    private Direction direction = Direction.NORTH; //
 
     public Car(int nrDoors, double enginePower, String modelName, Color color) { // gets arguments from subclasses
         this.nrDoors = nrDoors;
@@ -24,29 +24,53 @@ public abstract class Car implements Movable {
 @Override
 public void turnRight() {
     switch (direction) {
-        case NORTH -> direction = Direction.EAST;
-        case EAST -> direction = Direction.SOUTH;
-        case SOUTH -> direction = Direction.WEST;
-        case WEST -> direction = Direction.NORTH;
+        case NORTH:
+            direction = Direction.EAST;
+            break;
+        case EAST:
+            direction = Direction.SOUTH;
+            break;
+        case SOUTH:
+            direction = Direction.WEST;
+            break;
+        case WEST:
+            direction = Direction.NORTH;
+            break;
     }
 }
 
 @Override
 public void turnLeft() {
     switch (direction) {
-        case NORTH -> direction = Direction.WEST;
-        case EAST -> direction = Direction.NORTH;
-        case SOUTH -> direction = Direction.EAST;
-        case WEST -> direction = Direction.SOUTH;
+        case NORTH:
+            direction = Direction.WEST;
+            break;
+        case EAST:
+            direction = Direction.NORTH;
+            break;
+        case SOUTH:
+            direction = Direction.EAST;
+            break;
+        case WEST:
+            direction = Direction.SOUTH;
+            break;
     }
 }
 @Override
 public void move() {
     switch (direction) {
-        case NORTH -> y = y + currentSpeed;
-        case EAST -> x = x + currentSpeed;
-        case SOUTH -> y = y - currentSpeed;
-        case WEST -> x = x - currentSpeed;
+        case NORTH:
+            y = y + currentSpeed;
+            break;
+        case EAST:
+            x = x + currentSpeed;
+            break;
+        case SOUTH:
+            y = y - currentSpeed;
+            break;
+        case WEST:
+            x = x - currentSpeed;
+            break;
     }
 
 }
