@@ -8,6 +8,10 @@ public abstract class Car implements Movable {
     private double currentSpeed; // The current speed of the car
     private String modelName; // The car model name
 
+    private double x;
+    private double y;
+    private Direction direction = Direction.NORTH;
+
     public Car(int nrDoors, double enginePower, String modelName, Color color){ // gets arguments from subclasses
         this.nrDoors=nrDoors;
         this.enginePower=enginePower;
