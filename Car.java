@@ -3,7 +3,7 @@ import java.awt.*;
 public abstract class Car implements Movable {
     //Fields
     private Color color;
-    private int nrDoors; // Number of doors on the car
+    private int NrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
     private double currentSpeed; // The current speed of the car
     private String modelName; // The car model name
@@ -13,7 +13,7 @@ public abstract class Car implements Movable {
     private Direction direction = Direction.NORTH; //
 
     public Car(int nrDoors, double enginePower, String modelName, Color color) { // gets arguments from subclasses
-        this.nrDoors = nrDoors;
+        this.NrDoors = nrDoors;
         this.enginePower = enginePower;
         this.modelName = modelName;
         this.color = color;
@@ -84,7 +84,7 @@ public void move() {
     }
 
     public int getNrDoors() {
-        return nrDoors;
+        return NrDoors;
     }
     
     public String getModelName() {
