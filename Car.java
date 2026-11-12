@@ -12,35 +12,44 @@ public abstract class Car implements Movable {
     private double y;
     private Direction direction = Direction.NORTH;
 
-    public Car(int nrDoors, double enginePower, String modelName, Color color){ // gets arguments from subclasses
-        this.nrDoors=nrDoors;
-        this.enginePower=enginePower;
-        this.modelName=modelName;
-        this.color=color;
+    public Car(int nrDoors, double enginePower, String modelName, Color color) { // gets arguments from subclasses
+        this.nrDoors = nrDoors;
+        this.enginePower = enginePower;
+        this.modelName = modelName;
+        this.color = color;
         stopEngine();
-
-
-    @Override
-    public void turnRight() {
-        switch (direction) {
-            case NORTH -> direction = Direction.EAST;
-            case EAST -> direction = Direction.SOUTH;
-            case SOUTH -> direction = Direction.WEST;
-            case WEST -> direction = Direction.NORTH;
         }
 
 
-    public void turnLeft() {
-        switch (direction) {
-            case NORTH -> direction = Direction.WEST;
-            case EAST -> direction = Direction.NORTH;
-            case SOUTH -> direction = Direction.EAST;
-            case WEST -> direction = Direction.SOUTH;
-        }
-            }
-        }
+@Override
+public void turnRight() {
+    switch (direction) {
+        case NORTH -> direction = Direction.EAST;
+        case EAST -> direction = Direction.SOUTH;
+        case SOUTH -> direction = Direction.WEST;
+        case WEST -> direction = Direction.NORTH;
+    }
+}
+
+@Override
+public void turnLeft() {
+    switch (direction) {
+        case NORTH -> direction = Direction.WEST;
+        case EAST -> direction = Direction.NORTH;
+        case SOUTH -> direction = Direction.EAST;
+        case WEST -> direction = Direction.SOUTH;
+    }
+}
+@Override
+public void move() {
+    switch (direction) {
+        case NORTH -> y = y + currentSpeed;
+        case EAST -> x = x + currentSpeed;
+        case SOUTH -> y = y - currentSpeed;
+        case WEST -> x = x - currentSpeed;
     }
 
+}
     //Methods
     public Color getColor() {
         return color;
@@ -92,4 +101,8 @@ public abstract class Car implements Movable {
     public void brake(double amount) {
         decrementSpeed(amount);
     }
+
+    public double getX() {return x; }
+    public double getY() {return y; }
+
 }

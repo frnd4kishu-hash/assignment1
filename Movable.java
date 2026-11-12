@@ -1,7 +1,7 @@
 public interface Movable {
   void move();
 
-  void turnleft();
+  void turnLeft();
 
   void turnRight();
 
