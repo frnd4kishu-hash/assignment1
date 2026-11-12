@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class Saab95 extends Car {
 
-    public boolean turboOn;
+    private boolean turboOn; //turboOn is only used within the sublcass
 
     public Saab95() {
         super(2, 125, "Saab95", Color.red); //Must be in the same order as Supclass

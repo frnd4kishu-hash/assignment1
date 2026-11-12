@@ -4,7 +4,7 @@ public abstract class Car {
     //Fields
     public Color color;
     public int nrDoors; // Number of doors on the car
-    public double enginePower; // Engine power of the car
+    protected double enginePower; // Engine power of the car
     public double currentSpeed; // The current speed of the car
     public String modelName; // The car model name
 
@@ -44,16 +44,16 @@ public abstract class Car {
     public void stopEngine() {
         currentSpeed = 0;
     }
-    public void incrementSpeed(double amount) {
+    private void incrementSpeed(double amount) {
         currentSpeed = getCurrentSpeed() + speedFactor() * amount;
     }
 
-    public void decrementSpeed(double amount) {
+    private void decrementSpeed(double amount) {
         currentSpeed = getCurrentSpeed() - speedFactor() * amount;
     }
 
-    public abstract double speedFactor();
-
+    protected abstract double speedFactor();  // Protected because car declares it, but needs subclasses to see it to provide values
+                                             // No outside code need this, only subclasses to be able to override
     // TODO fix this method according to lab pm
     public void gas(double amount) {
         incrementSpeed(amount);
