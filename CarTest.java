@@ -61,6 +61,29 @@ public class CarTest {
         boolean result = car.getCurrentSpeed() < speedBeforeSaab;   //if the current speed is less than the speed before, the car slowed down
         reportResult("Brake works, Saab95 decreases its speed.", result);
     }
+    private static void GastestforInvalidvalues() {
+        Volvo240 car = new Volvo240();
+        boolean tooLowRejected = false;
+        boolean tooHighRejected = false;
+
+        try {
+            car.gas(1.5);
+        } catch  (IllegalArgumentException error)  {
+            tooHighRejected = true;
+        }
+
+        try {
+            car.gas(-0.5);
+        } catch  (IllegalArgumentException error)  {
+            tooHighRejected = true;
+        }
+
+        reportResult("gas() rejects values outside greater than 1", tooHighRejected);
+
+        reportResult("gas() rejects values outside less than 0", tooLowRejected);
+}
+
+
 
 
 
@@ -77,4 +100,6 @@ public class CarTest {
 
     }
 }
+
+
 
