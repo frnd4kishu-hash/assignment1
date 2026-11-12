@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public abstract class Car {
+public abstract class Car implements Movable{
     //Fields
     public Color color;
     public int nrDoors; // Number of doors on the car
