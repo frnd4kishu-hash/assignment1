@@ -12,12 +12,7 @@ public class Volvo240 extends Car{
         stopEngine();
     }
 
-
     @Override
-    public Color getColor() {
-        return super.getColor();
-    }
-
     public double speedFactor() {
         return enginePower * 0.01 * trimFactor;
     }
