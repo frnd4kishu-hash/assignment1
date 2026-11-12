@@ -2,11 +2,11 @@ import java.awt.*;
 
 public abstract class Car Movable {
     //Fields
-    public Color color;
-    public int nrDoors; // Number of doors on the car
+    private Color color;
+    private int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
-    public double currentSpeed; // The current speed of the car
-    public String modelName; // The car model name
+    private double currentSpeed; // The current speed of the car
+    private String modelName; // The car model name
 
     public Car(int nrDoors, double enginePower, String modelName, Color color){ // gets arguments from subclasses
         this.nrDoors=nrDoors;
@@ -28,7 +28,11 @@ public abstract class Car Movable {
     public int getNrDoors() {
         return nrDoors;
     }
-
+    
+    public String getModelName() {
+        return modelName;
+    }
+    
     public double getEnginePower() {
         return enginePower;
     }
