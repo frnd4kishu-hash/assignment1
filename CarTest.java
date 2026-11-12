@@ -61,15 +61,15 @@ public class CarTest {
         boolean result = car.getCurrentSpeed() < speedBeforeSaab;   //if the current speed is less than the speed before, the car slowed down
         reportResult("Brake works, Saab95 decreases its speed.", result);
     }
-    private static void GastestforInvalidvalues() {
+    private static void GastestforInvalidvalues() {   //checks if gas() only accepts values inside the range [0,1]
         Volvo240 car = new Volvo240();
-        boolean tooLowRejected = false;
+        boolean tooLowRejected = false;    //basically, the lowest value is not rejected yet because we don´t have an "amount" valeu for gas() or brake() yet
         boolean tooHighRejected = false;
 
         try {
             car.gas(1.5);
         } catch  (IllegalArgumentException error)  {
-            tooHighRejected = true;
+            tooHighRejected = true;  //value 1.5 is out of range, so "rejection" is true now
         }
 
         try {
@@ -78,12 +78,29 @@ public class CarTest {
             tooHighRejected = true;
         }
 
-        reportResult("gas() rejects values outside greater than 1", tooHighRejected);
+        reportResult("gas() rejects values outside greater than 1", tooHighRejected); //"rejection" is true, so prints success
 
         reportResult("gas() rejects values outside less than 0", tooLowRejected);
 }
 
+    private static void BraketestInvalidValues() {
+        Volvo240 car = new Volvo240();
+        boolean tooHighRejected = false;
+        boolean tooLowRejected = false;
 
+        try{
+            car.brake(1.5);
+        } catch (IllegalArgumentException error) {
+            tooHighRejected = true;
+        }
+        try{
+            car.brake(-0.5);
+        } catch (IllegalArgumentException error) {
+            tooHighRejected = true;
+        }
+        reportResult("brake() rejects values outside greater than 1" , tooHighRejected);
+        reportResult("gas() rejects values outside less than 0", tooLowRejected);
+    }
 
 
 
@@ -97,6 +114,7 @@ public class CarTest {
         testVolvoDoors();
         testSaabDoors();
         testBrake();
+        GastestforInvalidvalues();
 
     }
 }
