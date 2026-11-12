@@ -22,10 +22,22 @@ public abstract class Car implements Movable {
 
     @Override
     public void turnRight() {
-        case NORTH -> direction = Direction.EAST;
-        case EAST -> direction = Direction.SOUTH;
-        case SOUTH -> direction = Direction.WEST;
-        case WEST -> direction = Direction.NORTH;
+        switch (direction) {
+            case NORTH -> direction = Direction.EAST;
+            case EAST -> direction = Direction.SOUTH;
+            case SOUTH -> direction = Direction.WEST;
+            case WEST -> direction = Direction.NORTH;
+        }
+
+
+    public void turnLeft() {
+        switch (direction) {
+            case NORTH -> direction = Direction.WEST;
+            case EAST -> direction = Direction.NORTH;
+            case SOUTH -> direction = Direction.EAST;
+            case WEST -> direction = Direction.SOUTH;
+        }
+            }
         }
     }
 
