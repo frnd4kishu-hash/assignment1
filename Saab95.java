@@ -3,7 +3,6 @@ import java.awt.*;
 public class Saab95 extends Car {
 
     public boolean turboOn;
-    public double currentSpeed; // The current speed of the car
     public String modelName; // The car model name
     
     public Saab95() {
@@ -14,21 +13,10 @@ public class Saab95 extends Car {
         modelName = "Saab95";
         stopEngine();
     }
-    
-
-    public double getCurrentSpeed() {
-        return currentSpeed;
-    }
 
 
 
-    public void startEngine() {
-        currentSpeed = 0.1;
-    }
 
-    public void stopEngine() {
-        currentSpeed = 0;
-    }
 
     public void setTurboOn() {
         turboOn = true;

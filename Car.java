@@ -5,6 +5,7 @@ public abstract class Car {
     public Color color;
     public int nrDoors; // Number of doors on the car
     public double enginePower; // Engine power of the car
+    public double currentSpeed; // The current speed of the car
 
 
     //Methods
@@ -23,6 +24,19 @@ public abstract class Car {
     public double getEnginePower() {
         return enginePower;
     }
+
+    public double getCurrentSpeed() {
+        return currentSpeed;
+    }
+
+    public void startEngine() {
+        currentSpeed = 0.1;
+    }
+
+    public void stopEngine() {
+        currentSpeed = 0;
+    }
+
 
 
 

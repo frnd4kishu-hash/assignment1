@@ -3,7 +3,6 @@ import java.awt.*;
 public class Volvo240 extends Car{
 
     public final static double trimFactor = 1.25;
-    public double currentSpeed; // The current speed of the car
     public String modelName; // The car model name
     
     public Volvo240() {
@@ -14,18 +13,8 @@ public class Volvo240 extends Car{
         stopEngine();
     }
 
-    public double getCurrentSpeed() {
-        return currentSpeed;
-    }
 
 
-    public void startEngine() {
-        currentSpeed = 0.1;
-    }
-
-    public void stopEngine() {
-        currentSpeed = 0;
-    }
     
     public double speedFactor() {
         return enginePower * 0.01 * trimFactor;
