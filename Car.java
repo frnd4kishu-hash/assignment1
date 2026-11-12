@@ -37,9 +37,12 @@ public abstract class Car {
     public void stopEngine() {
         currentSpeed = 0;
     }
+    public void incrementSpeed(double amount) {
+        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+    }
 
-    public String getModelName() {
-        return modelName;
+    public void decrementSpeed(double amount) {
+        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
     }
 
     public abstract double speedFactor();
