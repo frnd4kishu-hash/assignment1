@@ -4,6 +4,7 @@ public abstract class Car {
     //Fields
     public Color color;
     public int nrDoors; // Number of doors on the car
+    public double enginePower; // Engine power of the car
 
 
     //Methods
@@ -18,6 +19,12 @@ public abstract class Car {
     public int getNrDoors() {
         return nrDoors;
     }
+
+    public double getEnginePower() {
+        return enginePower;
+    }
+
+
 
 
 
