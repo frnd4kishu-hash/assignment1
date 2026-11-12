@@ -18,6 +18,15 @@ public abstract class Car implements Movable {
         this.modelName=modelName;
         this.color=color;
         stopEngine();
+
+
+    @Override
+    public void turnRight() {
+        case NORTH -> direction = Direction.EAST;
+        case EAST -> direction = Direction.SOUTH;
+        case SOUTH -> direction = Direction.WEST;
+        case WEST -> direction = Direction.NORTH;
+        }
     }
 
     //Methods
