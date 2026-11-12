@@ -8,6 +8,13 @@ public abstract class Car {
     public double currentSpeed; // The current speed of the car
     public String modelName; // The car model name
 
+    public Car(int nrDoors, double enginePower, String modelName, Color color){ // gets arguments from subclasses
+        this.nrDoors=nrDoors;
+        this.enginePower=enginePower;
+        this.modelName=modelName;
+        this.color=color;
+        stopEngine();
+    }
 
     //Methods
     public Color getColor() {
