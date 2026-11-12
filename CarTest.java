@@ -61,7 +61,9 @@ public class CarTest {
         boolean result = car.getCurrentSpeed() < speedBeforeSaab;   //if the current speed is less than the speed before, the car slowed down
         reportResult("Brake works, Saab95 decreases its speed.", result);
     }
-    private static void GastestforInvalidvalues() {   //checks if gas() only accepts values inside the range [0,1]
+
+    // test 1 for gas between interval [0,1]
+    private static void GastestForInvalidValues() {   //checks if gas() only accepts values inside the range [0,1]
         Volvo240 car = new Volvo240();
         boolean tooLowRejected = false;    //basically, the lowest value is not rejected yet because we don´t have an "amount" valeu for gas() or brake() yet
         boolean tooHighRejected = false;
@@ -75,14 +77,14 @@ public class CarTest {
         try {
             car.gas(-0.5);
         } catch  (IllegalArgumentException error)  {
-            tooHighRejected = true;
+            tooLowRejected = true;
         }
 
         reportResult("gas() rejects values outside greater than 1", tooHighRejected); //"rejection" is true, so prints success
 
         reportResult("gas() rejects values outside less than 0", tooLowRejected);
 }
-
+// test 2 for brakes between the interval [0,1]
     private static void BraketestInvalidValues() {
         Volvo240 car = new Volvo240();
         boolean tooHighRejected = false;
@@ -98,23 +100,66 @@ public class CarTest {
         } catch (IllegalArgumentException error) {
             tooHighRejected = true;
         }
-        reportResult("brake() rejects values outside greater than 1" , tooHighRejected);
-        reportResult("gas() rejects values outside less than 0", tooLowRejected);
+        reportResult("brake() rejects values greater than 1" , tooHighRejected);
+        reportResult("brake() rejects values less than 0", tooLowRejected);
+    }
+    //Test 3 for requirement three
+    private static void testSpeedNotaAboveEnginePower() {
+        Saab95 car = new Saab95();
+        car.setTurboOn();
+        for (int i = 0; i<1000; i++) {
+            car.gas(1);
+        }
+        boolean result = car.getCurrentSpeed() <=car.getEnginePower();
+        reportResult("Speed never goes above enginePower", result);
+    }
+    //
+    private static void testSpeedNotBelowZero() {
+        Volvo240 car=new Volvo240();
+        car.gas(0.5);
+        for (int i =0; i<1000;i++) {
+            car.brake(1);
+        }
+        boolean result = car.getCurrentSpeed()>= 0;
+        reportResult("Speed never goes below 0", result);
+    }
+
+    private static void testGasDoesNotDecreaseSpeed() {
+        Volvo240 car = new Volvo240();
+        car.gas(0.5);
+        double speedBefore = car.getCurrentSpeed();
+        car.brake(0);
+        boolean result = car.getCurrentSpeed() >= speedBefore;
+        reportResult("gas() does not decrease speed", result);
+    }
+
+    private static void testBrakeDoesNotIncreaseSpeed(){
+        Volvo240 car = new Volvo240();
+        car.gas(0.5);
+        double speedBefore = car.getCurrentSpeed();
+        car.brake(0);
+        boolean result = car.getCurrentSpeed()<= speedBefore;
+        reportResult("brake() does not increase speed", result);
     }
 
 
 
-
-    static void main() {   //String[] args
+    public static void main() {   //String[] args
         testTurbo();
-        //TODO: add and run more tests
-
         testStartEngine();
         testStopEngine();
         testVolvoDoors();
         testSaabDoors();
         testBrake();
-        GastestforInvalidvalues();
+
+        //Task 4
+        GastestForInvalidValues();
+        BraketestInvalidValues();
+        testSpeedNotaAboveEnginePower();
+        testSpeedNotBelowZero();
+        testGasDoesNotDecreaseSpeed();
+        testBrakeDoesNotIncreaseSpeed();
+
 
     }
 }

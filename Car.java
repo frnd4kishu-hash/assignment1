@@ -107,24 +107,31 @@ public void move() {
         currentSpeed = 0;
     }
     private void incrementSpeed(double amount) {
-        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);
     }
 
     private void decrementSpeed(double amount) {
-        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
+        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
     }
 
     protected abstract double speedFactor();  // Protected because car declares it, but needs subclasses to see it to provide values
                                              // No outside code need this, only subclasses to be able to override
-    // TODO fix this method according to lab pm
+
     public void gas(double amount) {
+        if (amount < 0 || amount > 1 ) {
+            throw new IllegalArgumentException("gas has to be between 0 and 1");
+        }
         incrementSpeed(amount);
     }
 
-    // TODO fix this method according to lab pm
     public void brake(double amount) {
+        if (amount < 0 || amount > 1 ) {
+            throw new IllegalArgumentException("brake has to be between 0 and 1");
+        }
         decrementSpeed(amount);
     }
+
+
 
     public double getX() {return x; }
     public double getY() {return y; }
