@@ -44,7 +44,7 @@ public class CarTest {
         Saab95 SaabDoors = new Saab95();
         SaabDoors.getNrDoors();
         boolean result = SaabDoors.getNrDoors() == 2;   //checks if saab has 2 doors
-        reportResult("The car Saab95 has 4 doors ", result);
+        reportResult("The car Saab95 has 2 doors ", result);
 
     }
 
@@ -61,6 +61,15 @@ public class CarTest {
         boolean result = car.getCurrentSpeed() < speedBeforeSaab;   //if the current speed is less than the speed before, the car slowed down
         reportResult("Brake works, Saab95 decreases its speed.", result);
     }
+
+    // test for movement
+    private static void testMoveNorth() {
+        Volvo240 car = new Volvo240();
+        car.startEngine();
+        car.move();
+        reportResult("Car moves North by default", car.getY()>0);
+    }
+
 
     // test 1 for gas between interval [0,1]
     private static void GastestForInvalidValues() {   //checks if gas() only accepts values inside the range [0,1]
@@ -151,6 +160,7 @@ public class CarTest {
         testVolvoDoors();
         testSaabDoors();
         testBrake();
+        testMoveNorth();
 
         //Task 4
         GastestForInvalidValues();
