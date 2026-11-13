@@ -123,7 +123,7 @@ public class CarTest {
         boolean result = car.getCurrentSpeed()>= 0;
         reportResult("Speed never goes below 0", result);
     }
-
+//tests for requirement 4 task 4
     private static void testGasDoesNotDecreaseSpeed() {
         Volvo240 car = new Volvo240();
         car.gas(0.5);
