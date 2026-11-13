@@ -98,7 +98,7 @@ public class CarTest {
         try{
             car.brake(-0.5);
         } catch (IllegalArgumentException error) {
-            tooHighRejected = true;
+            tooLowRejected = true;
         }
         reportResult("brake() rejects values greater than 1" , tooHighRejected);
         reportResult("brake() rejects values less than 0", tooLowRejected);
@@ -128,7 +128,7 @@ public class CarTest {
         Volvo240 car = new Volvo240();
         car.gas(0.5);
         double speedBefore = car.getCurrentSpeed();
-        car.brake(0);
+        car.gas(0.5);
         boolean result = car.getCurrentSpeed() >= speedBefore;
         reportResult("gas() does not decrease speed", result);
     }
